@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#14b8a6" />
+    <meta name="color-scheme" content="light dark" />
+    
+    <!-- Favicon and app icons -->
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    
+    <!-- Preload critical assets -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@700;800;900&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+    <noscript>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@700;800;900&display=swap" />
+    </noscript>
+    
+    <!-- Fallback metadata (will be replaced by react-helmet) -->
+    <title>Muntasir Elagami | Professional Video Editor</title>
+    <meta name="description" content="Professional video editor with expertise in commercial, documentary and narrative filmmaking." />
+    
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Muntasir Elagami | Professional Video Editor" />
+    <meta property="og:description" content="Professional video editor with expertise in commercial, documentary and narrative filmmaking." />
+    <meta property="og:image" content="https://www.muntasirelagami.com/images/og-default.jpg" />
+    <meta property="og:url" content="https://www.muntasirelagami.com" />
+    <meta name="twitter:card" content="summary_large_image" />
+    
+    <!-- DNS Prefetch -->
+    <link rel="dns-prefetch" href="https://player.vimeo.com" />
+    <link rel="dns-prefetch" href="https://i.vimeocdn.com" />
+    
+    <!-- Disable automatic detection of phone numbers -->
+    <meta name="format-detection" content="telephone=no" />
+  </head>
+  <body class="antialiased">
+    <div id="root"></div>
+    <!-- Preload indicator -->
+    <div id="loader" class="fixed inset-0 z-50 flex items-center justify-center bg-white dark:bg-gray-900">
+      <div class="h-12 w-12 rounded-full border-4 border-t-teal-500 border-r-transparent border-b-transparent border-l-transparent animate-spin"></div>
+    </div>
+    <script>
+      // Restore dark mode before render to prevent flash of wrong theme
+      (function() {
+        try {
+          const storedTheme = localStorage.getItem('theme');
+          const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+          
+          if (storedTheme === 'dark' || (!storedTheme && prefersDark)) {
+            document.documentElement.classList.add('dark');
+          }
+        } catch (err) {}
+        
+        // Hide loader when page is loaded
+        window.addEventListener('load', function() {
+          document.getElementById('loader').style.display = 'none';
+        });
+      })();
+    </script>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
